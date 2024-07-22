@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./routes/route.js");
 const PORT = process.env.PORT;
+const URL = process.env.URL;
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.get("/", (req, res) => {
 
 app.use("/", router);
 
-mongoose.connect("mongodb+srv://suman:suman12345@firstcluster.iab7oe7.mongodb.net/?retryWrites=true&w=majority&appName=FirstCluster")
+mongoose.connect(URL)
 .then(() => {
     console.log("DB Connected!");
     app.listen(PORT, () => {
